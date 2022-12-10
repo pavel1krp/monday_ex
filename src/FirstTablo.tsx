@@ -19,29 +19,15 @@ const FirstTablo = () => {
 
     const addNumber = () => {
         if (number < 5) {
-            setNumber(number + 1)
+            setNumber(number + 1);
         }
         return
     }
     const setZero = () => {
         localStorage.clear()
-        setNumber(0)
+        setNumber(0);
     }
 
-
-
-    // const setForLocalStorage = () => {
-    //     localStorage.setItem('counterValue', JSON.stringify(number))
-    //     localStorage.setItem('counterValue', JSON.stringify(number))
-    // }
-    // const getForLocalStorage = () => {
-    //     let valueAsString = localStorage.getItem('counterValue')
-    //     if (valueAsString) {
-    //         let newValue = JSON.parse(valueAsString)
-    //         setNumber(newValue)
-    //     }
-    //
-    // }
     return (
         <div className={s.new}>
             <div className={s.smallTablo}>
@@ -49,7 +35,7 @@ const FirstTablo = () => {
                     <p className={number < 5 ? s.number : `${s.number}  ${s.red}`}>{number}</p>
                 </div>
                 <div className={s.button_div}>
-                    <Button name={'inc'} callback={addNumber} disabled={number < 5 ? false : true}/>
+                    <Button name={'inc'} callback={addNumber} disabled={number>=5}/>
                     <Button name={'reset'} callback={setZero}/>
                     {/*<Button name={'set'} callback={setForLocalStorage}/>*/}
                     {/*<Button name={'get'} callback={getForLocalStorage}/>*/}
