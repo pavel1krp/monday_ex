@@ -1,41 +1,45 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 import s from './ex.module.css'
 import Button from "../Button";
+import {useDispatch, useSelector} from "react-redux";
+import {cleanErrorAC, limitErrorAC, wrongErrorAC} from "../redux/error-reducer";
+import {AppRootStateType} from "../redux/store";
+import {addMessageAC, cleanMessageAC, deleteLastMessageAC} from "../redux/message-reducer";
+import {changeTitleAC, cleanTitleAC} from "../redux/title-reducer";
 
 export const Counter = () => {
-    const [message, setMessage] = useState<Array<string>>([])
-
-    const [title, setTitle] = useState('')
-    const [error, setError] = useState('')
+    const dispatch = useDispatch()
+    const title = useSelector<AppRootStateType, string>(state => state.title)
+    const message = useSelector<AppRootStateType, string[]>(state => state.message)
+    const error = useSelector<AppRootStateType, string>(state => state.error)
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
+        dispatch(changeTitleAC(e.currentTarget.value))
         if (message.length < 5) {
-            setError('')
+            dispatch(cleanErrorAC())
         }
     }
+
     const addMessage = () => {
         if (title.trim() === '') {
-            setTitle('')
-            setError('Wrong Value!')
+            dispatch(cleanTitleAC())
+            dispatch(wrongErrorAC())
             return;
         }
         if (message.length < 5) {
-            message.push(title)
-            setMessage([...message])
-            setTitle('')
+            dispatch(addMessageAC(title))
+            dispatch(cleanTitleAC())
         } else {
-            setError('Limit of messages is exceeded.')
-            return setTitle('')
+            dispatch(limitErrorAC())
+            dispatch(cleanTitleAC())
         }
     }
     const deleteMessage = () => {
-        setMessage([])
+        dispatch(cleanMessageAC())
     }
     const deleteLastMessage = () => {
-        let x = message.pop()
-        setMessage(message.slice(0, message.length))
-        setError('')
+        // setMessage(message.slice(0, message.length))
+        dispatch(deleteLastMessageAC())
     }
     const onEnterAdd = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {

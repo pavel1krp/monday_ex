@@ -1,5 +1,5 @@
 const initialState = ''
-export const titleReducer =(state:string=initialState, action:ActionType)=>{
+export const titleReducer =(state:string=initialState, action:ActionType):string=>{
     switch (action.type){
         case "CHANGE-TITLE": return action.title
         case 'CLEAN-TITLE': return ''
@@ -9,6 +9,7 @@ export const titleReducer =(state:string=initialState, action:ActionType)=>{
 export type ActionType = changeTitleACType|cleanTitleACType
 type changeTitleACType = ReturnType<typeof changeTitleAC>
 type cleanTitleACType = ReturnType<typeof cleanTitleAC>
+
 export const changeTitleAC =(title:string)=>{
     return{type: "CHANGE-TITLE", title}as const
 }

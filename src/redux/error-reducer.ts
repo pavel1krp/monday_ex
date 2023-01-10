@@ -12,13 +12,13 @@ type cleanErrorACType = ReturnType<typeof cleanErrorAC>
 type wrongErrorACType = ReturnType<typeof wrongErrorAC>
 type limitErrorACType = ReturnType<typeof limitErrorAC>
 
-const cleanErrorAC =()=>{
+export const cleanErrorAC =()=>{
     return{type: 'CLEAN-ERROR'}as const
 }
-const wrongErrorAC = () => {
+export const wrongErrorAC = () => {
   return {type:"WRONG-ERROR"}as const
 }
-const limitErrorAC = () => {
+export const limitErrorAC = () => {
     return {type:"LIMIT-ERROR"}as const
 }
 
