@@ -1,31 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import s from './ex.module.css'
 import Button from "../Button";
+import {addNumberAc, counterReducer, zeroNumber} from "../redux/counter-reducer";
 
 export const Messenger = () => {
-    const [number, setNumber] = useState(0)
-
-    useEffect(()=>{
-     let x = localStorage.getItem('counterValue')
-        if(x){
-            let y = JSON.parse(x)
-            setNumber(y)
-        }
-    },[])
-
-    useEffect(()=>{
-        localStorage.setItem('counterValue', JSON.stringify(number))
-    },[number])
+    const [number, setNumber] = useReducer(counterReducer,0)
 
     const addNumber = () => {
         if (number < 5) {
-            setNumber(number + 1);
+            setNumber(addNumberAc());
         }
         return
     }
     const setZero = () => {
         localStorage.clear()
-        setNumber(0);
+        setNumber(zeroNumber());
     }
 
     return (
