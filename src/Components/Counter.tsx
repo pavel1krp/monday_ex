@@ -1,20 +1,23 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React from 'react';
 import s from './ex.module.css'
 import Button from "../Button";
-import {addNumberAc, counterReducer, zeroNumber} from "../redux/counter-reducer";
+import {addNumberAc, zeroNumber} from "../redux/counter-reducer";
+import {AppRootStateType} from "../redux/store";
+import {useDispatch, useSelector} from "react-redux";
 
 export const Messenger = () => {
-    const [number, setNumber] = useReducer(counterReducer,0)
+    const number = useSelector <AppRootStateType, number>(state=>state.number)
+    const dispatch = useDispatch()
 
     const addNumber = () => {
         if (number < 5) {
-            setNumber(addNumberAc());
+            dispatch(addNumberAc())
         }
         return
     }
     const setZero = () => {
         localStorage.clear()
-        setNumber(zeroNumber());
+        dispatch(zeroNumber());
     }
 
     return (
@@ -26,8 +29,6 @@ export const Messenger = () => {
                 <div className={s.button_div}>
                     <Button name={'inc'} callback={addNumber} disabled={number>=5}/>
                     <Button name={'reset'} callback={setZero}/>
-                    {/*<Button name={'set'} callback={setForLocalStorage}/>*/}
-                    {/*<Button name={'get'} callback={getForLocalStorage}/>*/}
                 </div>
             </div>
         </div>

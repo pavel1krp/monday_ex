@@ -1,6 +1,6 @@
+const initialState:number = 0
 
-
-export const counterReducer =(state:number = 0, action: ActionType)=>{
+export const counterReducer =(state:number = initialState, action: ActionType):number=>{
     switch (action.type){
         case 'ADD-NUMBER':return state+1;
         case 'ZERO-NUMBER': return 0
