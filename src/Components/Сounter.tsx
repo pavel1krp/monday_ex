@@ -1,8 +1,8 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
-import s from './Tablo.module.css'
-import Button from "./Button";
+import s from './ex.module.css'
+import Button from "../Button";
 
-const Tablo = () => {
+export const Counter = () => {
     const [message, setMessage] = useState<Array<string>>([])
 
     const [title, setTitle] = useState('')
@@ -55,6 +55,4 @@ const Tablo = () => {
             <ul>{mappedMessage}</ul>
         </div>
     );
-};
-
-export default Tablo;
+}

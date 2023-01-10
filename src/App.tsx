@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Tablo from "./Tablo";
-import FirstTablo from "./FirstTablo";
+import {Messenger} from "./Components/Messager";
+import {Counter} from "./Components/Сounter";
+
 
 function App() {
 
   return (
 
     <div className="App">
-      <Tablo/>
-        <FirstTablo/>
+      <Counter />
+        <Messenger />
     </div>
   );
 }

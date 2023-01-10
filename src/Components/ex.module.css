@@ -1,0 +1,54 @@
+.tablo{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column ;
+    margin-top: 300px;
+}
+.input_with_button{
+    display: flex;
+}
+.red{
+    color: red;
+    font-size: 25px;
+}
+.new{
+    border: #61dafb 4px solid;
+    background: #282c34;
+    width: 500px;
+    height: 400px;
+    margin: auto;
+    border-radius: 20px;
+}
+.smallTablo{
+    width: 400px;
+    height: 300px;
+    border: #61dafb solid 3px;
+    border-radius: 20px;
+    margin: 50px auto;
+}
+.mainTablo{
+    width: 380px;
+    height: 200px;
+    background: #61dafb;
+    margin: 20px 10px 0 10px;
+    border-radius: 20px;
+}
+.button_div{
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+.button_div button{
+    background: #61dafb;
+    width: 75px;
+    height: 50px;
+    font-size: 26px;
+
+}
+.number{
+    font-size: 28px;
+    display: flex;
+    padding-top: 80px ;
+    justify-content: center;
+}

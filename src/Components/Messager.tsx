@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import s from './Tablo.module.css'
-import Button from "./Button";
+import s from './ex.module.css'
+import Button from "../Button";
 
-const FirstTablo = () => {
+export const Messenger = () => {
     const [number, setNumber] = useState(0)
 
     useEffect(()=>{
@@ -45,4 +45,3 @@ const FirstTablo = () => {
     );
 };
 
-export default FirstTablo;
